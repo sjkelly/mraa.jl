@@ -1,7 +1,18 @@
 
 @linux ? begin
 
-mraa_dir = Pkg.dir("mraa")*"/deps/mraa"
+pkg_dir = Pkg.dir("mraa")
+
+cd(pkg_dir)
+
+mraa_dir = pkg_dir*"/deps/mraa"
+
+if !isdir(mraa_dir)
+    run(`git submodule init`)
+end
+
+run(`git submodule update`)
+
 build_dir = mraa_dir*"/build/"
 
 if !isdir(build_dir)
