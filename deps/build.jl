@@ -7,10 +7,8 @@ cd(pkg_dir)
 
 mraa_dir = pkg_dir*"/deps/mraa"
 
-if !isdir(mraa_dir)
-    run(`git submodule init`)
-end
 
+run(`git submodule init`)
 run(`git submodule update`)
 
 build_dir = mraa_dir*"/build/"
