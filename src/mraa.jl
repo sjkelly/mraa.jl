@@ -8,8 +8,8 @@ function platform_name()
     bytestring(ccall((:mraa_get_platform_name, libmraa), Ptr{Uint8}, ()))
 end
 
-function Base.VersionNumber(::mraa)
-    VersionNumber(bytestring(ccall((:mraa_get_version, libmraa), Ptr{Uint8}, ())))
+function version()
+    bytestring(ccall((:mraa_get_version, libmraa), Ptr{Uint8}, ()))
 end
 
 function platform_type()
