@@ -1,6 +1,6 @@
 module mraa
 
-const libmraa = find_library(["libmraa"])
+const libmraa = find_library(["/usr/local/lib/i386-linux-gnu/libmraa.so.0.6.0", "/usr/local/lib/libmraa.so.0.6.0"])
 
 include("enums.jl")
 
