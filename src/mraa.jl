@@ -9,17 +9,17 @@ function init()
 end
 
 function deinit()
-    Result(ccall((:mraa_deinit, libmraa), Void, ()))
+    ccall((:mraa_deinit, libmraa), Void, ())
 end
 
 #mraa_boolean_t mraa_pin_mode_test (int pin, mraa_pinmodes_t mode)
 
 function adc_raw_bits()
-    Int(ccall((:mraa_adc_raw_bits, libmraa), Cuint, ()))
+    ccall((:mraa_adc_raw_bits, libmraa), Cuint, ())
 end
 
 function adc_supported_bits()
-    Int(ccall((:mraa_adc_supported_bits, libmraa), Cuint, ()))
+    ccall((:mraa_adc_supported_bits, libmraa), Cuint, ())
 end
 
 function set_log_level(p)
@@ -31,7 +31,7 @@ function platform_name()
 end
 
 function set_priority(p)
-    Int(ccall((:mraa_set_priority, libmraa), Cint, (Cuint,), p))
+    ccall((:mraa_set_priority, libmraa), Cint, (Cuint,), p)
 end
 
 function version()
