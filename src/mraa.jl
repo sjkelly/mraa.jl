@@ -4,8 +4,26 @@ const libmraa = find_library(["/usr/local/lib/i386-linux-gnu/libmraa.so.0.6.0", 
 
 include("enums.jl")
 
-function set_priority(p)
-    Int(ccall((:mraa_set_priority, libmraa), Cint, (Cuint,), p))
+function init()
+    Result(ccall((:mraa_init, libmraa), Cint, ()))
+end
+
+function deinit()
+    Result(ccall((:mraa_deinit, libmraa), Void, ()))
+end
+
+#mraa_boolean_t mraa_pin_mode_test (int pin, mraa_pinmodes_t mode)
+
+function adc_raw_bits()
+    Int(ccall((:mraa_adc_raw_bits, libmraa), Cuint, ()))
+end
+
+function adc_supported_bits()
+    Int(ccall((:mraa_adc_supported_bits, libmraa), Cuint, ()))
+end
+
+function set_log_level(p)
+    Result(ccall((:mraa_set_log_level, libmraa), Cint, (Cint,), p))
 end
 
 function platform_name()
