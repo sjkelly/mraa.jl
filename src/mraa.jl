@@ -27,7 +27,7 @@ function set_log_level(p)
 end
 
 function platform_name()
-    bytestring(ccall((:mraa_get_platform_name, libmraa), Ptr{Uint8}, ()))
+    String(ccall((:mraa_get_platform_name, libmraa), Ptr{UInt8}, ()))
 end
 
 function set_priority(p)
@@ -35,7 +35,7 @@ function set_priority(p)
 end
 
 function version()
-    VersionNumber(bytestring(ccall((:mraa_get_version, libmraa), Ptr{Uint8}, ())))
+    VersionNumber(String(ccall((:mraa_get_version, libmraa), Ptr{UInt8}, ())))
 end
 
 function Platform()
