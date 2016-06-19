@@ -7,7 +7,7 @@ typealias gpio_context Ptr{Void}
   GPIO_OUT_LOW = 3
 )
 
-function gpio_init(pin::Int)
+function gpio_init(pin::Int32)
     return ccall( (:mraa_gpio_init, libmraa), gpio_context, (Cint,), pin )
 end
 
@@ -15,7 +15,7 @@ function gpio_dir(gpio::gpio_context, dir::gpio_dir_t)
   return Result(ccall( (:mraa_gpio_dir, libmraa), Cint, (gpio_context,Cint), gpio, dir ))
 end
 
-function gpio_write(gpio::gpio_context, val::Cint)
+function gpio_write(gpio::gpio_context, val::Int32)
   return Result(ccall( (:mraa_gpio_write, libmraa), Cint, (gpio_context,Cint), gpio, val ))
 end
 
