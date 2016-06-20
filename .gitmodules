@@ -1,3 +1,0 @@
-[submodule "mraa"]
-	path = deps/mraa
-	url = https://github.com/intel-iot-devkit/mraa.git
