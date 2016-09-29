@@ -1,3 +1,5 @@
+# Wrap gpio API
+
 typealias gpio_context Ptr{Void}
 
 function gpio_init(pin::Int32)
@@ -26,7 +28,7 @@ function gpio_dir(gpio::gpio_context, dir::GpioDir)
   return Result(ccall( (:mraa_gpio_dir, libmraa), Cint, (gpio_context,Cint), gpio, dir ))
 end
 
-function gpio_read_dir(gpio::gpio_context, dir::GpioDir)
+function gpio_read_dir(gpio::gpio_context)
   dir = Ref{Cint}()
   succ = Result(ccall( (:mraa_gpio_read_dir, libmraa), Cint, (gpio_context,Ptr{Cint}),
     gpio, dir ))
